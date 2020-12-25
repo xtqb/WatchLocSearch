@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <!-- 白 -->
+    <color name="white">#FFFFFF</color>
+    <color name="awhite">#55FFFFFF</color>
+    <!-- 黑 -->
+    <color name="black">#000000</color>
+    <!-- 绿 -->
+    <color name="green_normal">#0d8700</color>
+    <!-- 灰 -->
+    <color name="grey1">#9D9C9C</color>
+    <color name="grey2">#BDBCBC</color>
+    <!-- 浅灰 -->
+    <color name="gray_light">#D9D9D9</color>
+    <!-- 暗灰 -->
+    <color name="dimgray">#494646</color>
+    <!-- 深灰 -->
+    <color name="gray_dark">#404040</color>
+    <color name="gray_little1">#D1D1D1</color>
+    <!-- 蓝 -->
+    <color name="blue">#00C0F0</color>
+    <color name="blue1">#1e7dd7</color>
+    <color name="blue2">#4990E2</color>
+    <color name="blue3">#0000FF</color>
+    <!-- 亮蓝 -->
+    <color name="blue_bright">#00B0F0</color>
+    <!-- 浅浅蓝 -->
+    <color name="blue_baby">#F2F7FA</color>
+    <!-- 浅浅蓝摁下 -->
+    <color name="blue_baby_press">#D9E8F0</color>
+    <!-- 蓝 灰 -->
+    <color name="blue_gray">#AFD1F0</color>
+    <!-- 蓝 字 -->
+    <color name="blue_word">#70A4D7</color>
+    <!-- 安全区域蓝字 -->
+    <color name="blue_word_security">#4191DD</color>
+    <!-- 浅蓝 -->
+    <color name="blue_light">#E1E8EE</color>
+    <!-- 深蓝 -->
+    <color name="blue_dark">#0077D5</color>
+    <!-- 背景灰 -->
+    <color name="gray_background">#EFEFEF</color>
+    <color name="agray_background">#99EFEFEF</color>
+    <!-- 橘红色 -->
+    <color name="orange_red">#f7522e</color>
+    <!-- 橘黄色 -->
+    <color name="orange_yellow">#cfab48</color>
+    <color name="orange_yellow1">#F28135</color>
+    <color name="orange_yellow2">#F18E53</color>
+    <!-- 黄色 -->
+    <color name="yellow">#ffff00</color>
+    <!-- 中灰 -->
+    <color name="gray_middle">#7F7F7F</color>
+    <color name="gray2">#808080</color>
+    <color name="offline_down_size">#777777</color>
+    <color name="tra_gray">#aa000000</color>
+    <color name="gray_lite">#c5c5c5</color>
+    <color name="taobao_black">#333333</color>
+
+    <color name="color_F78235">#F78235</color>
+    <color name="color_F78434">#F78434</color>
+    <!-- 红 -->
+    <color name="red">#FF0000</color>
+    <!-- 浅红 -->
+    <color name="red_little">#FF5B5B</color>
+    <!-- 键盘绿 正常 -->
+    <color name="btn_green_normal">#0d8700</color>
+    <!-- 键盘绿 按下 -->
+    <color name="btn_green_keydown">#0a6f00</color>
+    <!-- 键盘绿 焦点 -->
+    <color name="btn_green_focused">#0fa400</color>
+    <!-- 键盘绿 无效 -->
+    <color name="btn_green_unabled">#9c9c9c</color>
+    <color name="btn_green_unabled2">#616161</color>
+    <color name="green2">#00a944</color>
+    <color name="green3">#9AD04D</color>
+
+    <!-- 调整之后的颜色 -->
+
+
+    <!-- 深蓝 -->
+    <color name="drak_blue">#0040a0</color>
+    <color name="middle_blue">#4a8bed</color>
+    <color name="title_blue">#0752c3</color>
+
+    <!-- button 按键 调整为蓝色 -->
+
+
+    <!-- 蓝色  正常 -->
+    <color name="btn_blue_normal">#0040a0</color>
+
+    <!-- 蓝色 按下 -->
+    <color name="btn_blue_keydown">#0d8700</color>
+
+    <!-- 蓝色 焦点 -->
+    <color name="btn_blue_focused">#0d8700</color>
+
+    <!-- 无效 -->
+    <color name="btn_blue_unabled">#9c9c9c</color>
+
+    <!-- 橘黄 -->
+    <color name="orange">#FFA722</color>
+    <!-- 青蓝 -->
+    <color name="qinglan">#73E3FF</color>
+    <!-- zxing color -->
+    <color name="result_view">#b00000</color>
+    <color name="viewfinder_mask">#101010</color>
+    <color name="possible_result_points">#c0ffff</color>
+    <color name="darkgrey">#C0C0C0</color>
+    <color name="grey">#ebebeb</color>
+    <color name="gary">#898989</color>
+    <color name="gary1">#f0f0f0</color>
+    <color name="transparent">#999D9C9C</color>
+    <!-- 通明灰 -->
+    <color name="transparent_gray">#70D9D9D9</color>
+    <!-- 通明绿 -->
+    <color name="transparent_green">#991E2D1E</color>
+    <!--全透灰 -->
+    <color name="alltransparent_gray">#00D9D9D9</color>
+
+    <color name="his_bg">#F2F2F2</color>
+    <color name="his_paint">#00A94D</color>
+    <color name="green_little">#52CAD5</color>
+    <color name="green_dark">#1D9697</color>
+    <color name="green">#40A323</color>
+
+    <color name="line_success">#10886C</color>
+    <color name="line_fail">#D1D1D1</color>
+    <color name="text_fail">#474747</color>
+    <color name="text_being">#D56D2C</color>
+    <color name="text_success">#E50113</color>
+    <color name="hisbar_bg">#E2E4ED</color>
+    <color name="text_color">#0B0B0B</color>
+    <color name="bg_progressbar">#EBEBEC</color>
+    <color name="progressbar">#B2B2B4</color>
+
+    <color name="text_color_gray">#888888</color>
+    <color name="color_blue">#00edff</color>
+    <color name="text_normal_gray">#606060</color>
+</resources>

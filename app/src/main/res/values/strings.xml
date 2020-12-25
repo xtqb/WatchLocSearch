@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">WatchLocTest</string>
+    <string name="_noe_receiver_signal">收到@消息</string>
+</resources>
