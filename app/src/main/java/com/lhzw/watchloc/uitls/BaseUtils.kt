@@ -79,6 +79,7 @@ object BaseUtils {
 
     fun getPerRegisterByteArr(num: String): ByteArray {
         val byteArr = ByteArray(11)
+                //将拼接的10位Str 转成byte[]  复制byte[]前5位
         System.arraycopy(stringtoByteArr(num), 0, byteArr, 0, 5)
         return byteArr
 
@@ -144,18 +145,18 @@ object BaseUtils {
     @SuppressLint("WrongConstant")
     fun obtainSearchBytes(): ByteArray? {
         var numStr: String = getString(Constants.BINDING_NUM, "")
-        if ("" == numStr || numStr.length != 8) {
-            numStr = getMacFromHardware()!!.substring(4)
-            putString(Constants.BINDING_NUM, numStr)
+        if ("" == numStr || numStr.length != 8) {//为"" 或者长度不为8位
+            numStr = getMacFromHardware()!!.substring(4)//mac 12位数  截取后8位
+            putString(Constants.BINDING_NUM, numStr)  //sp保存mac后8位
         }
-        val CHANNEL: Int = getInt(Constants.CHANNEL_NUM, 0)
+        val CHANNEL: Int = getInt(Constants.CHANNEL_NUM, 0)//获取频道号  默认为0
         val channel: String
         channel = if (CHANNEL == 10) {
             "0" + "a"
         } else {
             "0$CHANNEL"
         }
-        numStr = numStr + channel
+        numStr = numStr + channel //将mac后8位+频道号(2位)  拼接作为
         return getPerRegisterByteArr(numStr)
     }
 

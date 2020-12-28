@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="signal_channel">
+        <item>信道 0</item>
+        <item>信道 1</item>
+        <item>信道 2</item>
+        <item>信道 3</item>
+        <item>信道 4</item>
+        <item>信道 5</item>
+        <item>信道 6</item>
+        <item>信道 7</item>
+        <item>信道 8</item>
+        <item>信道 9</item>
+        <item>信道 10</item>
+    </string-array>
+    <string-array name="command_action_arr">
+        <item>集合</item>
+        <item>开饭</item>
+        <item>休息</item>
+        <item>报坐标</item>
+        <item>清理火场</item>
+        <item>看守火场</item>
+        <item>撤离火场</item>
+        <item>拦截火头</item>
+        <item>向我靠拢</item>
+        <item>开设隔离</item>
+        <item>扑打</item>
+        <item>救护</item>
+        <item>散开</item>
+        <item>清点人</item>
+        <item>打开对讲</item>
+        <item>加油</item>
+        <item>突破</item>
+        <item>发报</item>
+        <item>启动水泵</item>
+        <item>强攻</item>
+    </string-array>
+
+</resources>

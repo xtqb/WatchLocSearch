@@ -27,6 +27,8 @@ class PerInfoAdapter(private var mContext: Context, private var list: MutableLis
         var view = LayoutInflater.from(mContext).inflate(R.layout.item_watch_person, null)
         holder = ViewHolder(view)
         holder.itemView.setOnClickListener(ItemOnClick())
+        holder.tv_bind.setOnClickListener(ItemOnClick())
+        holder.tv_tv_send_cmd.setOnClickListener(ItemOnClick())
         return holder
     }
 
@@ -66,18 +68,22 @@ class PerInfoAdapter(private var mContext: Context, private var list: MutableLis
         holder?.tv_name?.text = itemList.get(position).register
         holder?.tv_content?.text = "接收次数 \t\t " + itemList.get(position).num
         holder?.itemView?.tag = position
+        holder?.tv_bind?.tag = position
+        holder?.tv_tv_send_cmd?.tag = position
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var im_portrait: ImageView = view.findViewById(R.id.im_portrait) as ImageView
         var tv_name: TextView = view.findViewById(R.id.tv_name) as TextView
         var tv_content: TextView = view.findViewById(R.id.tv_content) as TextView
+        var tv_bind: TextView = view.findViewById(R.id.tv_bind) as TextView
+        var tv_tv_send_cmd: TextView = view.findViewById(R.id.tv_send_cmd) as TextView
     }
 
     private inner class ItemOnClick : View.OnClickListener {
         override fun onClick(v: View?) {
             var pos: Int = v!!.tag as Int
-            listner?.onItemClick(pos)
+            listner?.onItemClick(v,pos)
         }
 
     }
@@ -91,7 +97,7 @@ class PerInfoAdapter(private var mContext: Context, private var list: MutableLis
     fun getMap() = map
 
     interface OnItemClickListenr {
-        fun onItemClick(pos: Int)
+        fun onItemClick(v:View?,pos: Int)
     }
 
     fun setOnItemClickListner(callback: OnItemClickListenr) {

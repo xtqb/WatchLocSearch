@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="260dp"
+    android:background="@drawable/bg_search_rectangle">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/bg_search_conner_top_rectangle"
+        android:gravity="center"
+        android:text="信道选择"
+        android:textColor="#9C9C9C"
+        android:textSize="17dp" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_below="@+id/tv_title"
+        android:divider="@color/alltransparent_gray"
+        android:dividerHeight="1dp"></ListView>
+
+    <Button
+        android:id="@+id/bt_back"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/listview"
+        android:background="@drawable/bg_selector_conner_bottom_tv"
+        android:text="取消"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
+</RelativeLayout>

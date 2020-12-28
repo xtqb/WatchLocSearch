@@ -8,6 +8,7 @@ import android.content.Intent
 import android.content.ProtocolParser
 import android.graphics.BitmapFactory
 import android.util.Log
+import android.widget.Toast
 import com.lhzw.watchloc.R
 import com.lhzw.watchloc.bean.PersonInfo
 import com.lhzw.watchloc.db.CommDBOperation
@@ -28,31 +29,43 @@ import java.text.SimpleDateFormat
 class WatchLocReceiver : BroadcastReceiver() {
     val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
     override fun onReceive(context: Context?, intent: Intent?) {
-        Log.e("Tag", "receive 433 info ...  ")
+        Log.e("WatchLocReceiver", "receive 433 info ...  ")
         try {
             var parser: ProtocolParser? = intent?.getParcelableExtra("result")
             if (parser == null) return
-            var type = parser.cmdKey
-            val lng = BaseUtils.ByteToStringForLocInfo(parser.getLongitude())
-            val lat = BaseUtils.ByteToStringForLocInfo(parser.getLatitude())
-            val register_num = BaseUtils.traslation(parser.getPersonNum()!!).substring(0, 10)
-            val locTime = BaseUtils.byteArrToTime(parser.timeStamp)
-            var datatype = "SOS"
-            var icon = R.drawable.icon_sos2
-            var perType = Constants.PER_SOS
-            when (type!![0]) {
-                0x11.toByte(), 0xA3.toByte() -> {
+            var type = parser.cmdKey //指令号
+
+            val lng = BaseUtils.ByteToStringForLocInfo(parser.getLongitude())//经度
+            val lat = BaseUtils.ByteToStringForLocInfo(parser.getLatitude())//纬度
+            val register_num = BaseUtils.traslation(parser.getPersonNum()!!).substring(0, 10)//注册码
+            Log.e("WatchLocReceiver", "receive  type = ${type[0]} ,register_num=${register_num} ")
+            val locTime = BaseUtils.byteArrToTime(parser.timeStamp)//指令时间
+            var datatype = "SOS"//数据类型
+            var icon = R.drawable.icon_sos2//sos图标
+            var perType = Constants.PER_SOS//sos人员类型
+            when (type!![0]) {//指令号
+                0x11.toByte(), 0xA3.toByte() -> {//普通指令
                     icon = R.drawable.icon_common
                     perType = Constants.PER_COMMON
                 }
-                0xA1.toByte(), 0x12.toByte() -> {
+                0x12.toByte() -> {
+                    Log.d("WA","收到腕表绑定回复mac =$register_num,当前绑定需求为${BaseUtils.getString("WatchMac","")}")
+                    if(register_num == BaseUtils.getString("WatchMac","")){
+                        Toast.makeText(context,"${register_num}绑定成功",Toast.LENGTH_LONG).show()
+                        BaseUtils.putString("WatchMac","")
+                    }else{
+                        Toast.makeText(context,"收到${register_num}SOS请求",Toast.LENGTH_SHORT).show()
+                    }
+                }
+                0xA1.toByte()->{
+
                 }
             }
-            var item = PersonInfo(perType, register_num, "", 0, "", lat, lng, sdf.format(locTime))
+            var item = PersonInfo(perType, register_num, "", 0, "", lat, lng, sdf.format(locTime))//新建腕表bean
             var dao = DatabaseHelper.getHelper().getPersonDao()
-            CommDBOperation.saveToDB(dao, item)
-            showNotification(context!!, register_num, datatype, icon, "")
-            EventBus.getDefault().post(register_num)
+            CommDBOperation.saveToDB(dao, item)//将收到的手表人员入库
+            showNotification(context!!, register_num, datatype, icon, "")//同步到通知栏
+            EventBus.getDefault().post(register_num)//发送收到的腕表注册码
         } catch (e: Exception) {
 
         }
