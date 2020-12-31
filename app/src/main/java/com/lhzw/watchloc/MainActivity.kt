@@ -45,6 +45,7 @@ class MainActivity : AppCompatActivity() {
         initView()
         initData()
         setListener()
+
     }
 
     private val dialog by lazy {
