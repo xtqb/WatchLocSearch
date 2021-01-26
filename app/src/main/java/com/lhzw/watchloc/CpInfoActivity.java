@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 /**
@@ -12,14 +14,31 @@ import android.widget.TextView;
  */
 public class CpInfoActivity extends AppCompatActivity {
     private static final String TAG = "CpInfoActivity";
+    private CPManager mCPManager;
+    private TextView upTxt;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cp_info);
-        TextView upTxt =(TextView) findViewById(R.id.tv_info);
-        CPManager cp = (CPManager)getSystemService("cpmanager");
+        upTxt =(TextView) findViewById(R.id.tv_info);
+        Button btClear =(Button) findViewById(R.id.btn_clear);
+        mCPManager = (CPManager)getSystemService("cpmanager");
+        refresh();
+        btClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCPManager.loraCountsReset();
+                refresh();
+            }
+        });
 
-        byte[] re2 = cp.getLoraPackCounts();
+
+
+    }
+
+    private void refresh() {
+        upTxt.setText("");
+        byte[] re2 = mCPManager.getLoraPackCounts();
         Log.d(TAG,"get length = " + re2.length);
 
         if(re2 == null) {
@@ -140,7 +159,5 @@ public class CpInfoActivity extends AppCompatActivity {
             packCount = String.valueOf(k);
             upTxt.append("recv_timeout: " + packCount + "\n");
         }
-
-
     }
 }
