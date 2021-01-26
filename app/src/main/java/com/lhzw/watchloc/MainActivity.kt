@@ -2,6 +2,7 @@ package com.lhzw.watchloc
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.LoRaManager
 import android.os.Bundle
 import android.os.Handler
@@ -69,6 +70,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+
+
     }
 
     @SuppressLint("WrongConstant")
@@ -100,17 +103,15 @@ class MainActivity : AppCompatActivity() {
                     v.isEnabled = false
                     loRaManager?.changeWatchType(0)
                     Handler().postDelayed(Runnable {
-                        sendCMDBind(list[pos].register)
-                        runOnUiThread {
+                            sendCMDBind(list[pos].register)
                             Toast.makeText(this@MainActivity, "发送绑定成功", Toast.LENGTH_SHORT).show()
                             Handler().postDelayed({
-                                runOnUiThread {
                                     //切换到当前信道
                                     loRaManager?.changeWatchType(chanelNum)
                                     v.isEnabled = true//可用
-                                }
+
                             }, 5000)
-                        }
+
 
                     }, 2000)
 
@@ -124,7 +125,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setListener() {
-
+        tv_cp_info.setOnClickListener {
+            Intent(this,CpInfoActivity::class.java).apply {
+                startActivity(this)
+            }
+        }
         tv_search.setOnClickListener {
             //发送搜索指令
             sendCMDAllSearch()
@@ -132,10 +137,7 @@ class MainActivity : AppCompatActivity() {
             Handler().postDelayed({
                 runOnUiThread {
                     //刷新列表
-                    if (list.size > 0) list.clear()
-                    list = CommDBOperation.queryAll(perDao, "register")
-                    adapter.setList(list)
-                    tv_counter.text = "总计：@".replace("@", if (list.size == 0) "0" else "${adapter.getMap().size}")
+                    refrshList()
 
                 }
             }, 5000)
@@ -212,12 +214,16 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.tv_statistic -> {
                 Log.e("Tag", "statistics ...")
-                if (list.size > 0) list.clear()
-                list = CommDBOperation.queryAll(perDao, "register")
-                adapter.setList(list)
-                tv_counter.text = "总计：@".replace("@", if (list.size == 0) "0" else "${adapter.getMap().size}")
+                refrshList()
             }
         }
+    }
+
+    private fun refrshList() {
+        if (list.size > 0) list.clear()
+        list = CommDBOperation.queryAll(perDao, "register")
+        adapter.setList(list)
+        tv_counter.text = "总计：@".replace("@", if (list.size == 0) "0" else "${adapter.getMap().size}")
     }
 
     //发绑定指令 运行在子线程
@@ -264,9 +270,11 @@ class MainActivity : AppCompatActivity() {
         return bdByteArr
     }
 
-    @Subscribe(threadMode = ThreadMode.ASYNC)
+    @Subscribe(threadMode = ThreadMode.MAIN)
     fun handleEvent(register: String) {
-        runOnUiThread { tv_watch.text = register }
+      tv_watch.text = register
+        //刷新列表
+        refrshList()
     }
 
     override fun onDestroy() {

@@ -46,6 +46,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".CpInfoActivity" />
+
         <receiver android:name=".receiver.WatchLocReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.bspsos"/> <!-- 非密 -->

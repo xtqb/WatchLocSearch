@@ -34,16 +34,16 @@
             android:textSize="17sp" />
 
         <TextView
-            android:id="@+id/tv_add"
+            android:id="@+id/tv_cp_info"
             android:layout_width="70dp"
             android:layout_height="45dp"
             android:layout_alignParentRight="true"
             android:background="@drawable/bg_selector_add"
             android:gravity="center"
-            android:text="添加"
+            android:text="cpInfo"
             android:textColor="@color/white"
             android:textSize="17sp"
-            android:visibility="gone" />
+            android:visibility="visible" />
     </RelativeLayout>
 
     <TextView
